@@ -1,0 +1,45 @@
+{
+    "name": "qh-8/laravel-snowflake",
+    "description": "Generate Snowflake Identifier for Laravel",
+    "authors": [
+        {
+            "name": "Dinh Quoc Han",
+            "email": "dqh@dinhquochan.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^10.0|^11.0",
+        "illuminate/database": "^10.0|^11.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Qh\\LaravelSnowflake\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Qh\\LaravelSnowflake\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Qh\\LaravelSnowflake\\SnowflakeServiceProvider"
+            ],
+            "aliases": {
+                "Snowflake": "Qh\\LaravelSnowflake\\Facades\\Snowflake"
+            }
+        }
+    }
+}
