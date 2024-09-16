@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/qh-8/laravel-snowflake.svg?style=flat-square)](https://packagist.org/packages/qh-8/laravel-snowflake)
 [![Total Downloads](https://img.shields.io/packagist/dt/qh-8/laravel-snowflake.svg?style=flat-square)](https://packagist.org/packages/qh-8/laravel-snowflake)
-![GitHub Actions](https://github.com/qh-8/laravel-snowflake/actions/workflows/run-tests.yml/badge.svg)
+![GitHub Actions](https://github.com/qh-8/laravel-snowflake/actions/workflows/tests.yml/badge.svg)
 
 
 A Laravel package to generate unique snowflake ids.
