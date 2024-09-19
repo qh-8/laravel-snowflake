@@ -13,9 +13,9 @@ class SnowflakeServiceProvider extends ServiceProvider
             $config = $app->make('config');
 
             return new Snowflake(
-                $config->get('snowflake.epoch'),
-                $config->get('snowflake.worker_id', 1),
-                $config->get('snowflake.datacenter_id', 1),
+                (int) $config->get('snowflake.epoch'),
+                (int) $config->get('snowflake.worker_id', 1),
+                (int) $config->get('snowflake.datacenter_id', 1),
             );
         });
 
