@@ -8,15 +8,11 @@ class Snowflake
 
     protected const ID_BITS = 63;
 
-    protected const TIMESTAMP_BITS = 41;
-
     protected const WORKER_ID_BITS = 5;
 
     protected const DATACENTER_ID_BITS = 5;
 
     protected const SEQUENCE_BITS = 12;
-
-    protected const MAX_SEQUENCE = 4095;
 
     protected int $epoch;
 
@@ -46,8 +42,9 @@ class Snowflake
     public function generate(): int
     {
         $currentTime = $this->timestamp();
+        $maxSequence = (1 << self::SEQUENCE_BITS) - 1;
 
-        while (($sequenceId = $this->makeSequenceId($currentTime)) > self::MAX_SEQUENCE) {
+        while (($sequenceId = $this->makeSequenceId($currentTime)) > $maxSequence) {
             usleep(1);
             $currentTime = $this->timestamp();
         }
@@ -97,8 +94,10 @@ class Snowflake
         ];
     }
 
-    protected function makeSequenceId(int $currentTime, int $max = self::MAX_SEQUENCE): int
+    protected function makeSequenceId(int $currentTime, ?int $max = null): int
     {
+        $max = $max ?? (1 << self::SEQUENCE_BITS) - 1;
+
         if ($this->lastTimestamp === $currentTime) {
             $this->sequence = $this->sequence + 1;
 
