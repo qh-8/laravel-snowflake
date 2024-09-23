@@ -24,9 +24,9 @@ class Snowflake
 
     protected int $sequence = 0;
 
-    private int $datacenterId;
+    protected int $datacenterId;
 
-    private int $workerId;
+    protected int $workerId;
 
     public function __construct(
         ?int $timestamp = null,
