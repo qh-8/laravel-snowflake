@@ -14,6 +14,10 @@ class Snowflake
 
     protected const SEQUENCE_BITS = 12;
 
+    protected const MAX_WORKER_ID = (1 << self::WORKER_ID_BITS) - 1;
+
+    protected const MAX_DATACENTER_ID = (1 << self::DATACENTER_ID_BITS) - 1;
+
     protected int $epoch;
 
     protected int $lastTimestamp;
@@ -31,6 +35,18 @@ class Snowflake
     ) {
         if ($timestamp === null) {
             $timestamp = strtotime(self::DEFAULT_EPOCH_DATETIME);
+        }
+
+        if ($workerId > self::MAX_WORKER_ID) {
+            throw new \RangeException(
+                'Worker ID must be between 0 and ' . self::MAX_WORKER_ID
+            );
+        }
+
+        if ($datacenterId > self::MAX_DATACENTER_ID) {
+            throw new \RangeException(
+                'Data Center ID must be between 0 and ' . self::MAX_DATACENTER_ID
+            );
         }
 
         $this->epoch = $timestamp * 1000;
