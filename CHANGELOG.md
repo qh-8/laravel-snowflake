@@ -2,6 +2,10 @@
 
 All notable changes to `qh-8/laravel-snowflake` will be documented in this file.
 
+## 1.1.2 - 2024-09-23
+
+- Fix: add validation for worker id and data center id (#1)
+
 ## 1.1.1 - 2024-09-19
 
 - Fix bug in register Snowflake service provider
